@@ -1,0 +1,62 @@
+input[type='password'], input[type='text'] {
+    border-radius: 50px;
+}
+
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+html, body {
+    background-color: #111111;
+}
+
+.program {
+    border-radius: 10px;
+    box-shadow: 0 0 0 .5px white;
+    background-color: rgba(50,50,50,.01);
+    padding-top: 10px;
+    margin-bottom: 100px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #bababa;
+    z-index: 0;
+}
+
+.program h4 {
+    width: 100%;
+    text-align: center;
+    display: block;
+}
+
+.program.empty {
+    box-shadow: 0 0 0 0;
+}
+
+h3 {
+    color: #bababa;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    font-size: 36px;
+    width: 100%;
+    text-align: center;
+}
+
+.noprog h5 {
+    color: #bababa;
+    margin-top: 100px;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+}
+
+.noprog a {
+    display: block;
+    width: 50%;
+    margin: 20px auto;
+}

@@ -1,0 +1,52 @@
+body {
+    background-color: #111111;
+}
+
+.main {
+    background-color: transparent;
+    border: 0;
+    padding: 50px;
+    margin-top: 100px;
+}
+
+.main input {
+    background-color:rgba(255,255,255,.15);
+    color: rgba(255,255,255,0.8);
+    border-radius: 30px;
+}
+.main input::placeholder {
+    color: rgba(255,255,255,0.4);
+}
+
+.main input:focus {
+    background-color: rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.8);
+}
+
+.main h2 {
+    color: rgba(255,255,255,0.8);
+    text-align:center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.main [type='submit'] {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+a#footer-text {
+    color: #dddddd;
+    font-size: 10px;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    display: block;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px rgb(220,220,220) inset;
+}

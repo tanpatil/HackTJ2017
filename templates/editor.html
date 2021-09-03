@@ -1,0 +1,67 @@
+{% extends "base-nav.html" %}
+
+{% block css %}
+    {{ super() }}
+    <style>
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editor.css') }}">
+{% endblock %}
+
+{% block js %}
+    {{ super() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.9/fabric.min.js" integrity="sha256-D5qjlhHft5LNta9Zzei8iPWEAGyIQt6JkWftlBA81yk=" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/editor.js') }}"></script>
+    <script>
+    var save_endpoint = "{{ url_for('programs.save') }}";
+    var program_id = {{ prog_id|default("-1") }};
+    try {
+        var program_save = "{{ json|replace('"', '\\"')|safe }}";
+    }
+    catch (e) {
+        var program_save = "";
+    }
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div id="picker">
+        <div id="picker-list">
+            <h3>Triggers</h3>
+            <div id="triggers"></div>
+            <h3>Events</h3>
+            <div id="events"></div>
+            <h3>Conditionals</h3>
+            <div id="conditionals"></div>
+            <hr />
+            <span id="default" class="tool active"><i class="fa fa-fw fa-mouse-pointer"></i></span>
+            <span id="arrow" class="tool"><i class="fa fa-fw fa-expand"></i></span>
+            <span id="delete" class="tool"><i class="fa fa-fw fa-trash-o"></i></span>
+            <span id="noaction" class="tool"><i class="fa fa-fw fa-ban"></i></span>
+            <span id="filter" class="tool pull-right"><i class="fa fa-fw fa-filter"></i></span>
+            <hr />
+            <input type="text" id="name" placeholder="Name" style="max-width: 150px; display: inline-block; border-radius: 25px" value="{{ name|default('') }}" class="form-control" /> <button id="save" class="btn btn-success"><i class="fa fa-floppy-o"></i> Save</button>
+        </div>
+        <i class="fa fa-times close-icon" id="picker-close"></i>
+    </div>
+    <canvas id="editor"></canvas>
+
+    <!-- Modal -->
+    <div class="modal fade" id="conditional-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Block</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary save-modal">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

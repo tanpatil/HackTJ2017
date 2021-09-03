@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
+{% endblock %}
+
+{% block js %}
+    {{ super() }}
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div id="particles-js"></div>
+<div class="container">
+<div id="register" class="box clearfix main">
+    <form method="POST">
+        <h2>Register</h2>
+        <div class="form-group">
+            <div class="input-group">
+                <input id="id_name" name="name" type="name" class="form-control" placeholder="Name" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input id="id_email" name="email" type="email" class="form-control" placeholder="Email" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input id="id_password" name="password" type="password" class="form-control" placeholder="Password" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input id="id_confirm" name="confirm" type="password" class="form-control" placeholder="Confirm Password" />
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+        <a href="{{ url_for('users.login') }}" id="footer-text">Already have an account? Click here!</a>
+    </form>
+</div>
+<div class="footer"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base-nav.html" %}
+
+{% block js %}
+    {{ super() }}
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+{% endblock %}
+
+{% block css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+<div id="particles-js"></div>
+<h3>Your Programs</h3>
+<div id="home" class="container main">
+    {% if not programs %}
+        <div class="noprog">
+            <h5>It looks like you haven't made any programs yet!</h5>
+            <a href="{{ url_for('programs.editor') }}" class="btn btn-primary">Start a program!</a>
+        </div>
+    {% else %}
+        <div class="row">
+        {% for prog in programs %}
+            <div class="program col-sm-5">
+                <h4>{{ prog.name if prog.name is not none else 'Unnamed Program' }}<h4>
+                <a href="{{ url_for('programs.edit', id=prog.id) }} " class="btn btn-primary">Edit</a>
+                <a href="{{ url_for('programs.delete', id=prog.id) }} " class="btn btn-danger">Delete</a>
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

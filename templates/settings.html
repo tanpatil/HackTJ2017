@@ -1,0 +1,21 @@
+{% extends "base-nav.html" %}
+
+{% block js %}
+    {{ super() }}
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+{% endblock %}
+
+{% block css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+<div id="particles-js"></div>
+<h3>Settings</h3>
+<div id="settings" class="container main">
+    <p>Email: {{ user.email }}</p>
+    <h4>Change password</h4>
+</div>
+{% endblock %}

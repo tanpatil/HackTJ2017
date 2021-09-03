@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Automate</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        {% block css %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/css/tether.css" integrity="sha256-XlckdtWgpo4xmVoJR0BgtatbV/UpLTiOE+UBfRGFutg=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha256-rr9hHBQ43H7HSOmmNkxzQGazS/Khx+L8ZRHteEY1tQ4=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/css/messenger.min.css" integrity="sha256-s9TkqCOAYSX0OL0SFkn9uuNWdDLIXKMUV0ZICMxDBC8=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/css/messenger-theme-flat.css" integrity="sha256-VkjwgxP9YQTZwAfP89z6hhs22SJo4g+uGhUJxSLIzb4=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/base.css')}}">
+        {% endblock %}
+        {% block js %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.js" integrity="sha256-jVfFb7AbGi7S/SLNl8SB4/MYaf549eEs+NlIWMoARHg=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha256-+kIbbrvS+0dNOjhmQJzmwe/RILR/8lb/+4+PUNVW09k=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/js/messenger.min.js" integrity="sha256-BnQeGKS32Pt/mkLkk742fNXjfLN5/4OOd3L9PAf5d3s=" crossorigin="anonymous"></script>
+        <script src="{{ url_for('static',filename='js/base.js')}}"></script>
+        {% endblock %}
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+            <script>
+                $(document).ready(function() {
+                    {% for category, message in messages %}
+                        {% if category == "error" %}
+                            Messenger().error("{{ message }}");
+                        {% elif category == "success" %}
+                            Messenger().success("{{ message }}");
+                        {% else %}
+                            Messenger().info("{{ message }}");
+                        {% endif %}
+                    {% endfor %}
+                });
+            </script>
+            {% endif %}
+        {% endwith %}
+    </head>
+    <body>
+        {% block nav %}{% endblock %}
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>

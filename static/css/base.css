@@ -1,0 +1,75 @@
+html, body {
+}
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+.box {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+}
+.footer {
+    text-align: center;
+}
+.btn {
+    border-radius: 50px;
+}
+.btn-primary {
+    border-color: #01349b;
+    background-color: #01349b;
+}
+.btn-primary:hover {
+    border-color: #1060b0;
+    background-color: #0266bb;
+}
+
+@media screen and (min-width: 991px) {
+    nav.navbar {
+        padding-left:  10%;
+        padding-right: 10%;
+    }
+}
+nav.navbar-dark {
+    background-color: #232323;
+}
+nav.navbar-dark a.nav-link,
+nav.navbar-dark a.navbar-brand {
+    color: #afafaf;
+    transition: color 100ms;
+}
+@media screen and (min-width: 991px) {
+    nav.navbar-dark a.navbar-brand {
+        border-right: 1px solid #afafaf;
+        padding-right: 25px;
+    }
+}
+nav.navbar-dark .navbar-toggler {
+    border: 1px solid #555555;
+    cursor: pointer;
+}
+nav.navbar-dark .navbar-toggler-right .navbar-toggler-icon {
+    color: #afafaf;
+}
+nav.navbar-dark a.nav-link:hover,
+nav.navbar-dark a.navbar-brand:hover {
+    color: #efefef;
+}
+.navbar-toggler-icon:after {
+    font-family: "FontAwesome";
+    font-size: 28px;
+    content: "\f0c9";
+}
+
+nav.navbar {
+    z-index: 1;
+}
